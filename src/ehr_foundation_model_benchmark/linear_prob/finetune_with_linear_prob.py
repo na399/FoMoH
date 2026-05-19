@@ -8,6 +8,7 @@ import pickle
 from meds import train_split, tuning_split, held_out_split
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import auc, precision_recall_curve, roc_auc_score
+from tqdm import tqdm
 
 MINIMUM_NUM_CASES = 10
 TRAIN_SIZES = [100, 1000, 10000, 100000]
@@ -19,7 +20,28 @@ def main(args):
     print(f"Loading subject_splits.parquet from {subject_splits_path}")
     subject_splits = pl.read_parquet(subject_splits_path)
     features_label_input_dir = Path(args.features_label_input_dir)
-    features_label = pl.read_parquet(list(features_label_input_dir.rglob('*.parquet')))
+    # print(list(features_label_input_dir.rglob('*.parquet')))
+    # features_label = pl.read_parquet(list(features_label_input_dir.rglob('*.parquet')))
+    base = Path(features_label_input_dir)
+
+    for fp in base.rglob("*.parquet"):
+        try:
+            df = pl.read_parquet(fp, n_rows=0)  # only read schema, fast
+            dtype = df.schema.get("prediction_time", None)
+
+            if isinstance(dtype, pl.Datetime) and dtype.time_unit != "ns":
+                print(f"Mismatch in {fp}: prediction_time = {dtype}")
+        except Exception as e:
+            print(f"Error reading {fp}: {e}")
+
+    dfs = []
+    for fp in tqdm(features_label_input_dir.rglob("*.parquet")):
+        df = pl.read_parquet(fp).with_columns(
+            pl.col("prediction_time").dt.cast_time_unit("us")
+        )
+        dfs.append(df)
+
+    features_label = pl.concat(dfs)
 
     output_dir = Path(args.output_dir)
     task_output_dir = output_dir / args.task_name
@@ -40,6 +62,7 @@ def main(args):
     ).filter(
         pl.col("split") == held_out_split
     )
+    print(test_dataset)
 
     should_terminate = False
     # We keep track of the sample ids that have been picked from the previous few-shots experiments.
@@ -155,6 +178,8 @@ def main(args):
                     json.dump(metrics, f, indent=4)
             except ValueError as e:
                 print(e)
+                import traceback
+                traceback.print_exc()
 
 
 if __name__ == "__main__":
