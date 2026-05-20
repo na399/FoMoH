@@ -1,0 +1,74 @@
+# Please point this to your model folder
+model_name_or_path: ""
+# Please point this to your model folder
+tokenizer_name_or_path: ""
+
+# Please point this to the MEDS_READER because the MEDS data is used as the input
+data_folder: ""
+dataset_prepared_path: ""
+validation_split_percentage: 0.05
+validation_split_num: 1000
+preprocessing_num_workers: 16
+preprocessing_batch_size: 1000
+streaming: False
+
+#Tokenizer
+vocab_size: 50000
+min_frequency: 100
+
+# Below is a list of Med-to-CehrBert related arguments
+att_function_type: "cehr_bert"
+is_data_in_meds: true
+inpatient_att_function_type: "mix"
+include_auxiliary_token: true
+include_demographic_prompt: false
+
+do_train: true
+overwrite_output_dir: true
+resume_from_checkpoint: null
+seed: 42
+
+num_hidden_layers: 17
+max_position_embeddings: 2048
+hidden_size: 768
+
+# torch dataloader configs
+dataloader_num_workers: 16
+dataloader_prefetch_factor: 8
+
+# Please point this to your model folder
+output_dir: ""
+evaluation_strategy: "epoch"
+save_strategy: "epoch"
+learning_rate: 0.0002
+per_device_train_batch_size: 4
+per_device_eval_batch_size: 4
+gradient_accumulation_steps: 1
+num_train_epochs: 50
+# When streaming is set to True, max_steps needs to be provided
+#max_steps: 100
+
+warmup_steps: 500
+weight_decay: 0.01
+logging_dir: "./logs"
+logging_steps: 100
+save_total_limit: 5
+load_best_model_at_end: true
+metric_for_best_model: "eval_loss"
+greater_is_better: false
+
+report_to: "none"
+
+
+bf16: true
+sample_packing: true
+use_early_stopping: true
+early_stopping_threshold: 0.001
+disconnect_problem_list_events: true
+meds_to_cehrbert_conversion_type: "MedsToCehrbertOMOP"
+meds_exclude_tables: ["measurement", "observation", "device_exposure"]
+max_tokens_per_batch: 32768
+attn_implementation: "flash_attention_2"
+gradient_checkpointing: false
+include_value_prediction: false
+include_ttv_prediction: false
