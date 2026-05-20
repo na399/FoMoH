@@ -57,6 +57,7 @@ Step 2. Pre-train CEHR-BERT
 Pretrain cehr-bert using the data generated from the previous step
 ```bash
 python -u -m cehrbert.runners.hf_cehrbert_pretrain_runner \
+  --is_data_in_meds false \
   --model_name_or_path $CEHR_BERT_MODEL_DIR \
   --tokenizer_name_or_path $CEHR_BERT_MODEL_DIR \
   --output_dir $CEHR_BERT_MODEL_DIR \
@@ -68,8 +69,12 @@ python -u -m cehrbert.runners.hf_cehrbert_pretrain_runner \
   --evaluation_strategy epoch --save_strategy epoch \
   --sample_packing --max_tokens_per_batch 32768 \
   --warmup_steps 500 --weight_decay 0.01 \
-  --num_train_epochs 50 --learning_rate 0.002 \
-  --use_early_stopping --early_stopping_threshold 0.001
+  --warmup_ratio 0.05 --weight_decay 0.01 \
+  --num_train_epochs 50 --learning_rate 0.0002 \
+  --use_early_stopping --early_stopping_threshold 0.001 \
+  --attn_implementation flash_attention_2 \
+  --disconnect_problem_list_events \
+  --load_best_model_at_end True
 ```
 
 Step 3. CEHR-BERT model evaluation
@@ -93,6 +98,8 @@ sh $CEHRBERT_HOME/run_cehrbert.sh \
      --model_path=$CEHR_BERT_MODEL_DIR \
      --output_dir=$CEHRBERT_FEATURES_DIR \
      --preprocessing_workers=8 \
+     --model_name="cehrbert" \
+     --batch_size=64 \
      --model_name="cehrbert"
 ```
 ### Patient outcome tasks
@@ -113,6 +120,7 @@ sh $CEHRBERT_HOME/run_cehrbert.sh \
      --model_path=$CEHR_BERT_MODEL_DIR \
      --output_dir=$CEHR_BERT_FEATURES_DIR \
      --preprocessing_workers=8 \
+     --batch_size=64 \
      --model_name="cehrbert"
 ```
 
@@ -127,3 +135,7 @@ sh $PROJECT_ROOT/src/ehr_foundation_model_benchmark/linear_prob/run_linear_prob_
   --meds_dir $OMOP_MEDS \
   --model_name cehrbert
 ```
+
+Step 5. Run the pipeline on CUMC MEDs and MIMIC MEDs
+------------------------
+Refer to the [meds/README.md](./meds/README.md) and [mimic/README.md](./mimic/README.md)
