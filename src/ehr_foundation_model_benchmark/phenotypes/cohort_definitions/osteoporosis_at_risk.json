@@ -1,1 +1,1260 @@
-"{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"VisitOccurrence\" : {\n\t\t\t\t\t\"VisitTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"First\"\n\t\t}\n\t},\n\t\"AdditionalCriteria\" : {\n\t\t\"Type\" : \"ANY\",\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\"CodesetId\" : 6,\n\t\t\t\t\t\t\"ConditionTypeExclude\" : false,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\"CodesetId\" : 7,\n\t\t\t\t\t\t\"ConditionTypeExclude\" : false,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"Observation\" : {\n\t\t\t\t\t\t\"CodesetId\" : 8,\n\t\t\t\t\t\t\"ObservationTypeExclude\" : false,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"Observation\" : {\n\t\t\t\t\t\t\"ObservationTypeExclude\" : false,\n\t\t\t\t\t\t\"ObservationSourceConcept\" : 8,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"Measurement\" : {\n\t\t\t\t\t\t\"CodesetId\" : 9,\n\t\t\t\t\t\t\"MeasurementTypeExclude\" : false,\n\t\t\t\t\t\t\"ValueAsNumber\" : {\n\t\t\t\t\t\t\t\"Value\" : 125,\n\t\t\t\t\t\t\t\"Op\" : \"lt\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"ProcedureOccurrence\" : {\n\t\t\t\t\t\t\"CodesetId\" : 10,\n\t\t\t\t\t\t\"ProcedureTypeExclude\" : false,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\"CodesetId\" : 11,\n\t\t\t\t\t\t\"ConditionTypeExclude\" : false\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"DrugExposure\" : {\n\t\t\t\t\t\t\"CodesetId\" : 12,\n\t\t\t\t\t\t\"DrugTypeExclude\" : false,\n\t\t\t\t\t\t\"RouteConcept\" : [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4132161,\n\t\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Oral route\",\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"26643006\",\n\t\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Route\",\n\t\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3466984,\n\t\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Per oral route\",\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"26643006\",\n\t\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Route\",\n\t\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Nebraska Lexicon\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\"DrugExposure\" : {\n\t\t\t\t\t\t\"CodesetId\" : 13,\n\t\t\t\t\t\t\"DrugTypeExclude\" : false,\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t},\n\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\"Days\" : 0,\n\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t},\n\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t},\n\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"DemographicCriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"Age\" : {\n\t\t\t\t\t\"Value\" : 65,\n\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t},\n\t\t\t\t\"Gender\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8532,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"FEMALE\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Age\" : {\n\t\t\t\t\t\"Value\" : 70,\n\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t},\n\t\t\t\t\"Gender\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8507,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"MALE\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"M\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"Age\" : {\n\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\"Op\" : \"gte\"\n\t\t\t\t},\n\t\t\t\t\"Gender\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8532,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"FEMALE\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Race\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8527,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"White\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"5\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Race\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Race\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8515,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Asian\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"2\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Race\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Race\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"Groups\" : []\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 4,\n\t\t\t\"name\" : \"MASLD risk factor\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 201826,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Type 2 diabetes mellitus\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"44054006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 436940,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Metabolic syndrome X\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"237602007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 433736,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Obesity\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"414916001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3.667435e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Sarcopenia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"772791006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 320128,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Essential hypertension\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"59621000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4159131,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dyslipidemia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"370992007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4120314,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Hypertriglyceridemia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"302870006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.044331e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Polycystic ovary syndrome\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"237055002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.627102e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic kidney disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"709044004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4243957,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Familial hypobetalipoproteinemia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"60193003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3.739948e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Lysosomal acid lipase deficiency\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"715923003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 608006,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Fatty acid oxidation defect\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1156591005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 5,\n\t\t\t\"name\" : \"Pathological fracture\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 73571,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pathological fracture\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"268029009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 6,\n\t\t\t\"name\" : \"fracture\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 75053,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Fracture of bone\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"125605004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 7,\n\t\t\t\"name\" : \"Smoking\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 915747,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Current smoker (e.g., cigarette, cigar, pipe, e-cigarette or marijuana)\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"G9642\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"HCPCS\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"HCPCS\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 2101895,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Current tobacco smoker (CAD, CAP, COPD, PV) (DM)\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1034F\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CPT4\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"CPT4\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4028286,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smoker's respiratory syndrome\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"10729003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4126918,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smokers keratosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"235033006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4184633,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Passive smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"43381005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4263877,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smokers' cough\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"46802002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4298794,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"77176002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 2.149489e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco smoking status for tobacco smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"81229-7\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.076694e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Current smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"64234-8\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.274240e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Current tobacco smoker or currently exposed to secondhand smoke (Asthma)\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1032F\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CPT4\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"CPT4\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.478425e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Hookah pipe smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"698289004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.480287e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Current smoker annual review\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"D\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Invalid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"505651000000103\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Procedure\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.627055e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smoker's melanosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"5661000124106\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 8,\n\t\t\t\"name\" : \"smoking and drinking alcohol\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4298794,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"77176002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4218106,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Alcoholism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"7200002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 903657,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Cigarette smoker\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"OMOP5181838\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"OMOP Extension\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4275495,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco smoking behavior - finding\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"365981007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 903652,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Findings of tobacco or its derivatives use or exposure\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"OMOP5181832\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"OMOP Extension\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 9,\n\t\t\t\"name\" : \"weight\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.587617e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body weight\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"BDYWGT\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"LOINC Class\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1003901,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body weight\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"LP29703-3\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"LOINC Hierarchy\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3025315,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body weight\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"29463-7\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.587617e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body weight atomic\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"BDYWGT.ATOM\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"LOINC Class\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1003383,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"General body weight\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"LP7774-5\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"LOINC Hierarchy\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1002670,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Specific body weight\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"LP7775-2\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"LOINC Hierarchy\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 10,\n\t\t\t\"name\" : \"bariatric surgery\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.588955e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Bariatric Surgery Procedures\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1007385\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Procedure\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CPT4\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"CPT4 Hierarchy\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4.588896e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Laparoscopic Bariatric Surgery Procedures\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1007386\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Procedure\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CPT4\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"CPT4 Hierarchy\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 11,\n\t\t\t\"name\" : \"osteoporosis risk factor of diseases\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 197320,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Acute renal failure syndrome\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"14669001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4074815,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Inflammatory bowel disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"24526004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 80809,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Rheumatoid arthritis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"69896004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4212540,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic liver disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"328383001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 439002,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Eating disorder\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"72366004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 12,\n\t\t\t\"name\" : \"corticosteroids\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 2.160218e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"CORTICOSTEROIDS, OTHER COMBINATIONS\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"D07X\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Drug\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ATC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"ATC 3rd\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 13,\n\t\t\t\"name\" : \"high-risk medications\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 2.160275e+07,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Thyroid hormones\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"C\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Classification\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"H03AA\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Drug\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ATC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"ATC 4th\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1310149,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"warfarin\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"11289\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Drug\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"RxNorm\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Ingredient\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [],\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+{
+  "cdmVersionRange": ">=5.0.0",
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "VisitOccurrence": false
+      }
+    ],
+    "ObservationWindow": [0, 0],
+    "PrimaryCriteriaLimit": "First"
+  },
+  "AdditionalCriteria": {
+    "Type": "ANY",
+    "CriteriaList": [
+      {
+        "Criteria": {
+          "ConditionOccurrence": {
+            "CodesetId": 6,
+            "ConditionTypeExclude": false,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "ConditionOccurrence": {
+            "CodesetId": 7,
+            "ConditionTypeExclude": false,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "Observation": {
+            "CodesetId": 8,
+            "ObservationTypeExclude": false,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "Observation": {
+            "ObservationTypeExclude": false,
+            "ObservationSourceConcept": 8,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "Measurement": {
+            "CodesetId": 9,
+            "MeasurementTypeExclude": false,
+            "ValueAsNumber": {
+              "Value": 125,
+              "Op": "lt"
+            },
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "ProcedureOccurrence": {
+            "CodesetId": 10,
+            "ProcedureTypeExclude": false,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "ConditionOccurrence": {
+            "CodesetId": 11,
+            "ConditionTypeExclude": false
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "DrugExposure": {
+            "CodesetId": 12,
+            "DrugTypeExclude": false,
+            "RouteConcept": [
+              {
+                "CONCEPT_ID": 4132161,
+                "CONCEPT_NAME": "Oral route",
+                "STANDARD_CONCEPT": null,
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "INVALID_REASON": null,
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_CODE": "26643006",
+                "DOMAIN_ID": "Route",
+                "VOCABULARY_ID": "SNOMED",
+                "CONCEPT_CLASS_ID": null
+              },
+              {
+                "CONCEPT_ID": 3466984,
+                "CONCEPT_NAME": "Per oral route",
+                "STANDARD_CONCEPT": null,
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "INVALID_REASON": null,
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_CODE": "26643006",
+                "DOMAIN_ID": "Route",
+                "VOCABULARY_ID": "Nebraska Lexicon",
+                "CONCEPT_CLASS_ID": null
+              }
+            ]
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": 1,
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      },
+      {
+        "Criteria": {
+          "DrugExposure": {
+            "CodesetId": 13,
+            "DrugTypeExclude": false,
+            "Age": {
+              "Value": 50,
+              "Op": "gte"
+            }
+          }
+        },
+        "StartWindow": {
+          "Start": -1,
+          "End": [0, 1],
+          "UseIndexEnd": false,
+          "UseEventEnd": false
+        },
+        "RestrictVisit": false,
+        "IgnoreObservationPeriod": false,
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1,
+          "IsDistinct": false
+        }
+      }
+    ],
+    "DemographicCriteriaList": [
+      {
+        "Age": {
+          "Value": 65,
+          "Op": "gte"
+        },
+        "Gender": [
+          {
+            "CONCEPT_ID": 8532,
+            "CONCEPT_NAME": "FEMALE",
+            "STANDARD_CONCEPT": null,
+            "STANDARD_CONCEPT_CAPTION": "Unknown",
+            "INVALID_REASON": null,
+            "INVALID_REASON_CAPTION": "Unknown",
+            "CONCEPT_CODE": "F",
+            "DOMAIN_ID": "Gender",
+            "VOCABULARY_ID": "Gender",
+            "CONCEPT_CLASS_ID": null
+          }
+        ]
+      },
+      {
+        "Age": {
+          "Value": 70,
+          "Op": "gt"
+        },
+        "Gender": [
+          {
+            "CONCEPT_ID": 8507,
+            "CONCEPT_NAME": "MALE",
+            "STANDARD_CONCEPT": null,
+            "STANDARD_CONCEPT_CAPTION": "Unknown",
+            "INVALID_REASON": null,
+            "INVALID_REASON_CAPTION": "Unknown",
+            "CONCEPT_CODE": "M",
+            "DOMAIN_ID": "Gender",
+            "VOCABULARY_ID": "Gender",
+            "CONCEPT_CLASS_ID": null
+          }
+        ]
+      },
+      {
+        "Age": {
+          "Value": 50,
+          "Op": "gte"
+        },
+        "Gender": [
+          {
+            "CONCEPT_ID": 8532,
+            "CONCEPT_NAME": "FEMALE",
+            "STANDARD_CONCEPT": null,
+            "STANDARD_CONCEPT_CAPTION": "Unknown",
+            "INVALID_REASON": null,
+            "INVALID_REASON_CAPTION": "Unknown",
+            "CONCEPT_CODE": "F",
+            "DOMAIN_ID": "Gender",
+            "VOCABULARY_ID": "Gender",
+            "CONCEPT_CLASS_ID": null
+          }
+        ],
+        "Race": [
+          {
+            "CONCEPT_ID": 8527,
+            "CONCEPT_NAME": "White",
+            "STANDARD_CONCEPT": null,
+            "STANDARD_CONCEPT_CAPTION": "Unknown",
+            "INVALID_REASON": null,
+            "INVALID_REASON_CAPTION": "Unknown",
+            "CONCEPT_CODE": "5",
+            "DOMAIN_ID": "Race",
+            "VOCABULARY_ID": "Race",
+            "CONCEPT_CLASS_ID": null
+          },
+          {
+            "CONCEPT_ID": 8515,
+            "CONCEPT_NAME": "Asian",
+            "STANDARD_CONCEPT": null,
+            "STANDARD_CONCEPT_CAPTION": "Unknown",
+            "INVALID_REASON": null,
+            "INVALID_REASON_CAPTION": "Unknown",
+            "CONCEPT_CODE": "2",
+            "DOMAIN_ID": "Race",
+            "VOCABULARY_ID": "Race",
+            "CONCEPT_CLASS_ID": null
+          }
+        ]
+      }
+    ],
+    "Groups": []
+  },
+  "ConceptSets": [
+    {
+      "id": 4,
+      "name": "MASLD risk factor",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 201826,
+              "CONCEPT_NAME": "Type 2 diabetes mellitus",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "44054006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 436940,
+              "CONCEPT_NAME": "Metabolic syndrome X",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "237602007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 433736,
+              "CONCEPT_NAME": "Obesity",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "414916001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 36674346,
+              "CONCEPT_NAME": "Sarcopenia",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "772791006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 320128,
+              "CONCEPT_NAME": "Essential hypertension",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "59621000",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4159131,
+              "CONCEPT_NAME": "Dyslipidemia",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "370992007",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4120314,
+              "CONCEPT_NAME": "Hypertriglyceridemia",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "302870006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40443308,
+              "CONCEPT_NAME": "Polycystic ovary syndrome",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "237055002",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46271022,
+              "CONCEPT_NAME": "Chronic kidney disease",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "709044004",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4243957,
+              "CONCEPT_NAME": "Familial hypobetalipoproteinemia",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "60193003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 37399482,
+              "CONCEPT_NAME": "Lysosomal acid lipase deficiency",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "715923003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 608006,
+              "CONCEPT_NAME": "Fatty acid oxidation defect",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "1156591005",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Pathological fracture",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 73571,
+              "CONCEPT_NAME": "Pathological fracture",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "268029009",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "fracture",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 75053,
+              "CONCEPT_NAME": "Fracture of bone",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "125605004",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "Smoking",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 915747,
+              "CONCEPT_NAME": "Current smoker (e.g., cigarette, cigar, pipe, e-cigarette or marijuana)",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "G9642",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "HCPCS",
+              "CONCEPT_CLASS_ID": "HCPCS"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 2101895,
+              "CONCEPT_NAME": "Current tobacco smoker (CAD, CAP, COPD, PV) (DM)",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "1034F",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "CPT4",
+              "CONCEPT_CLASS_ID": "CPT4"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4028286,
+              "CONCEPT_NAME": "Smoker's respiratory syndrome",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "10729003",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4126918,
+              "CONCEPT_NAME": "Smokers keratosis",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "235033006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4184633,
+              "CONCEPT_NAME": "Passive smoker",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "43381005",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4263877,
+              "CONCEPT_NAME": "Smokers' cough",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "46802002",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4298794,
+              "CONCEPT_NAME": "Smoker",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "77176002",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 21494888,
+              "CONCEPT_NAME": "Tobacco smoking status for tobacco smoker",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "81229-7",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "Clinical Observation"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 40766945,
+              "CONCEPT_NAME": "Current smoker",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "64234-8",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "Clinical Observation"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 42742405,
+              "CONCEPT_NAME": "Current tobacco smoker or currently exposed to secondhand smoke (Asthma)",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "1032F",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "CPT4",
+              "CONCEPT_CLASS_ID": "CPT4"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44784248,
+              "CONCEPT_NAME": "Hookah pipe smoker",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "698289004",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 44802867,
+              "CONCEPT_NAME": "Current smoker annual review",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "D",
+              "INVALID_REASON_CAPTION": "Invalid",
+              "CONCEPT_CODE": "505651000000103",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Procedure"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 46270550,
+              "CONCEPT_NAME": "Smoker's melanosis",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "5661000124106",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "smoking and drinking alcohol",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 4298794,
+              "CONCEPT_NAME": "Smoker",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "77176002",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4218106,
+              "CONCEPT_NAME": "Alcoholism",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "7200002",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 903657,
+              "CONCEPT_NAME": "Cigarette smoker",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "OMOP5181838",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "OMOP Extension",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4275495,
+              "CONCEPT_NAME": "Tobacco smoking behavior - finding",
+              "STANDARD_CONCEPT": "N",
+              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "365981007",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 903652,
+              "CONCEPT_NAME": "Findings of tobacco or its derivatives use or exposure",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "OMOP5181832",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "OMOP Extension",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "weight",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 45876171,
+              "CONCEPT_NAME": "Body weight",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "BDYWGT",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "LOINC Class"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1003901,
+              "CONCEPT_NAME": "Body weight",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "LP29703-3",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "LOINC Hierarchy"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 3025315,
+              "CONCEPT_NAME": "Body weight",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "29463-7",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "Clinical Observation"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45876172,
+              "CONCEPT_NAME": "Body weight atomic",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "BDYWGT.ATOM",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "LOINC Class"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1003383,
+              "CONCEPT_NAME": "General body weight",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "LP7774-5",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "LOINC Hierarchy"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1002670,
+              "CONCEPT_NAME": "Specific body weight",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "LP7775-2",
+              "DOMAIN_ID": "Measurement",
+              "VOCABULARY_ID": "LOINC",
+              "CONCEPT_CLASS_ID": "LOINC Hierarchy"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "name": "bariatric surgery",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 45889549,
+              "CONCEPT_NAME": "Bariatric Surgery Procedures",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "1007385",
+              "DOMAIN_ID": "Procedure",
+              "VOCABULARY_ID": "CPT4",
+              "CONCEPT_CLASS_ID": "CPT4 Hierarchy"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45888965,
+              "CONCEPT_NAME": "Laparoscopic Bariatric Surgery Procedures",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "1007386",
+              "DOMAIN_ID": "Procedure",
+              "VOCABULARY_ID": "CPT4",
+              "CONCEPT_CLASS_ID": "CPT4 Hierarchy"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "osteoporosis risk factor of diseases",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 197320,
+              "CONCEPT_NAME": "Acute renal failure syndrome",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "14669001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4074815,
+              "CONCEPT_NAME": "Inflammatory bowel disease",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "24526004",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 80809,
+              "CONCEPT_NAME": "Rheumatoid arthritis",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "69896004",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 4212540,
+              "CONCEPT_NAME": "Chronic liver disease",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "328383001",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 439002,
+              "CONCEPT_NAME": "Eating disorder",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "72366004",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "name": "corticosteroids",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 21602178,
+              "CONCEPT_NAME": "CORTICOSTEROIDS, OTHER COMBINATIONS",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "D07X",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "ATC",
+              "CONCEPT_CLASS_ID": "ATC 3rd"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "name": "high-risk medications",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 21602753,
+              "CONCEPT_NAME": "Thyroid hormones",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "H03AA",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "ATC",
+              "CONCEPT_CLASS_ID": "ATC 4th"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 1310149,
+              "CONCEPT_NAME": "warfarin",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "11289",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "RxNorm",
+              "CONCEPT_CLASS_ID": "Ingredient"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    }
+  ],
+  "QualifiedLimit": "All",
+  "ExpressionLimit": "All",
+  "InclusionRules": [],
+  "CensoringCriteria": [],
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {}
+}
