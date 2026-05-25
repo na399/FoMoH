@@ -1,0 +1,91 @@
+diff --git a/corebehrt/model/model.py b/corebehrt/model/model.py
+--- a/corebehrt/model/model.py
++++ b/corebehrt/model/model.py
+@@ -322,7 +322,8 @@ class RoFormerSelfFlashAttention(BertSelfAttention):
+-    modeling_bert.BERT_SELF_ATTENTION_CLASSES.update({"flash_attention_2": RoFormerSelfFlashAttention})
++    if hasattr(modeling_bert, "BERT_SELF_ATTENTION_CLASSES"):
++        modeling_bert.BERT_SELF_ATTENTION_CLASSES.update({"flash_attention_2": RoFormerSelfFlashAttention})
+@@ -470,12 +471,13 @@ class BertEHREncoder(BertModel):
+         config.rotary_value = False
+         self.encoder = RoFormerEncoder(config)
++        attn_implementation = getattr(config, "_attn_implementation", getattr(config, "attn_implementation", "eager"))
+         print(f"is_flash_attn_2_available(): {is_flash_attn_2_available()}")
+-        print(f"config._attn_implementation: {config._attn_implementation}")
++        print(f"config.attn_implementation: {attn_implementation}")
+         for layer in self.encoder.layer:
+             layer.intermediate.intermediate_act_fn = SwiGLU(config)
+-            if is_flash_attn_2_available() and config._attn_implementation == "flash_attention_2":
++            if is_flash_attn_2_available() and attn_implementation == "flash_attention_2":
+                 print("Replacing BertEHREncoder self attention with RoFormerSelfFlashAttention")
+                 layer.attention.self = RoFormerSelfFlashAttention(config)
+diff --git a/corebehrt/common/initialize.py b/corebehrt/common/initialize.py
+--- a/corebehrt/common/initialize.py
++++ b/corebehrt/common/initialize.py
+@@ -45,7 +45,7 @@ class Initializer:
+             config.rotary_value = False
+             model = BertEHRModel(config)
+-        print('Checking flash attention', model.config._attn_implementation)
++        print('Checking flash attention', getattr(model.config, '_attn_implementation', getattr(model.config, 'attn_implementation', 'eager')))
+         return model
+diff --git a/corebehrt/main_pretrain.py b/corebehrt/main_pretrain.py
+--- a/corebehrt/main_pretrain.py
++++ b/corebehrt/main_pretrain.py
+@@ -203,37 +203,47 @@ def main_train(config_path):
+     learning_rate = cfg.get("trainer_args").get("learning_rate", 1e-4)
+     dataloader_num_workers = cfg.get("trainer_args").get("dataloader_num_workers", 8)
+-    dataloader_prefetch_factor = cfg.get("trainer_args").get("dataloader_prefetch_factor", 8)
++    max_steps = cfg.get("trainer_args").get("max_steps", -1)
++    num_train_epochs = cfg.get("trainer_args").get("num_train_epochs", 20)
++    evaluation_strategy = cfg.get("trainer_args").get("evaluation_strategy", "epoch")
++    save_strategy = cfg.get("trainer_args").get("save_strategy", "epoch")
++    load_best_model_at_end = cfg.get("trainer_args").get("load_best_model_at_end", evaluation_strategy != "no")
+ 
+     training_args = TrainingArguments(
+         output_dir=cfg.paths.output_path,
+-        save_strategy="epoch",
+-        eval_strategy='epoch',
+-        warmup_steps=500,
++        save_strategy=save_strategy,
++        save_steps=cfg.get("trainer_args").get("save_steps", 500),
++        evaluation_strategy=evaluation_strategy,
++        warmup_steps=cfg.get("trainer_args").get("warmup_steps", 500),
+         per_device_train_batch_size=per_device_train_batch_size,
+         gradient_accumulation_steps=gradient_accumulation_steps,
+-        per_device_eval_batch_size=32,
++        per_device_eval_batch_size=cfg.get("trainer_args").get("per_device_eval_batch_size", 32),
+         learning_rate=learning_rate,
+         weight_decay=0.01,
+-        num_train_epochs=20,
++        max_steps=max_steps,
++        num_train_epochs=num_train_epochs,
+         data_seed=31,
+         seed=31,
+         disable_tqdm=False,
+         metric_for_best_model='eval_loss',
+-        load_best_model_at_end=True,
++        load_best_model_at_end=load_best_model_at_end,
+         logging_steps=logging_steps,
+         label_names=label_names,
+         do_train=True,
++        do_eval=evaluation_strategy != "no",
+         dataloader_num_workers=dataloader_num_workers,
+-        dataloader_prefetch_factor=dataloader_prefetch_factor,
+     )
+@@ -247,16 +257,17 @@ def main_train(config_path):
+-    trainer = trainer_class(
++    callbacks = [LossLoggingCallback(log_file=os.path.join(cfg.paths.output_path, "loss_log.json"))]
++    if load_best_model_at_end:
++        callbacks.insert(0, CustomEarlyStoppingCallback(1, 0.01))
++
++    trainer = trainer_class(
+         model=model,
+         args=training_args,
+         train_dataset=prepared_dataset["train"],
+         eval_dataset=prepared_dataset["validation"],
+-        callbacks=[
+-            CustomEarlyStoppingCallback(1, 0.01),
+-            LossLoggingCallback(log_file=os.path.join(cfg.paths.output_path, "loss_log.json"))
+-        ],
++        callbacks=callbacks,
+         data_collator=data_collator_fn
+     )

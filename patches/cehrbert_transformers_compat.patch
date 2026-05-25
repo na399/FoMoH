@@ -1,0 +1,7 @@
+diff --git a/cehrbert/models/hf_models/hf_cehrbert.py b/cehrbert/models/hf_models/hf_cehrbert.py
+--- a/cehrbert/models/hf_models/hf_cehrbert.py
++++ b/cehrbert/models/hf_models/hf_cehrbert.py
+@@ -286,7 +286,8 @@ class BertSelfFlashAttention(BertSelfAttention):
+-    modeling_bert.BERT_SELF_ATTENTION_CLASSES.update({"flash_attention_2": BertSelfFlashAttention})
++    if hasattr(modeling_bert, "BERT_SELF_ATTENTION_CLASSES"):
++        modeling_bert.BERT_SELF_ATTENTION_CLASSES.update({"flash_attention_2": BertSelfFlashAttention})

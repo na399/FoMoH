@@ -1,0 +1,35 @@
+diff --git a/femr/omop_meds_tutorial/prepare_motor.py b/femr/omop_meds_tutorial/prepare_motor.py
+--- a/femr/omop_meds_tutorial/prepare_motor.py
++++ b/femr/omop_meds_tutorial/prepare_motor.py
+@@ -16,9 +16,16 @@ def main(args):
+-    with meds_reader.SubjectDatabase(str(meds_reader_path), num_threads=32) as database:
+-        subject_ids = [_ for _ in database]
++    with meds_reader.SubjectDatabase(str(meds_reader_path), num_threads=args.num_threads) as database:
++        subject_ids = list(database)
++        if args.max_subjects is not None:
++            subject_splits_smoke = pl.read_parquet(subject_splits_path).filter(pl.col("subject_id").is_in(subject_ids))
++            per_split = max(1, int(args.max_subjects) // 3)
++            subject_ids = (
++                subject_splits_smoke.sort("subject_id").group_by("split").head(per_split)["subject_id"].to_list()
++            )
++            database = database.filter(subject_ids)
+@@ -41,7 +48,7 @@ def main(args):
+-        subject_splits = pd.read_parquet(subject_splits_path)
++        subject_splits = pd.read_parquet(subject_splits_path)
+@@ -73,7 +80,7 @@ def main(args):
+-            train_batches = processor.convert_dataset(train_database, tokens_per_batch=args.tokens_per_batch, num_proc=32)
++            train_batches = processor.convert_dataset(train_database, tokens_per_batch=args.tokens_per_batch, num_proc=args.num_threads)
+@@ -84,7 +91,7 @@ def main(args):
+-            val_batches = processor.convert_dataset(val_database, tokens_per_batch=args.tokens_per_batch, num_proc=32)
++            val_batches = processor.convert_dataset(val_database, tokens_per_batch=args.tokens_per_batch, num_proc=args.num_threads)
+@@ -126,5 +133,12 @@ def create_omop_meds_tutorial_argparser():
+         default=8192,
+     )
++    parser.add_argument(
++        "--max_subjects",
++        dest="max_subjects",
++        required=False,
++        type=int,
++        default=None,
++    )
+     return parser

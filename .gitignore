@@ -1,7 +1,21 @@
-.idea/
-*venv*
-*build*
-*egg-info
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
 
-processes.txt
-dist/
+temp/*
+!temp/.gitkeep
+!temp/fomoh_mimic/
+temp/fomoh_mimic/*
+!temp/fomoh_mimic/.gitkeep
+
+runs/*
+!runs/.gitkeep
+!runs/fomoh_mimic/
+runs/fomoh_mimic/*
+!runs/fomoh_mimic/.gitkeep
+
+wandb/
+outputs/
+checkpoints/

@@ -1,3 +1,28 @@
+Metadata-Version: 2.4
+Name: ehr_foundation_model_benchmark
+Version: 0.1.dev78+g3835861a7.d20260525
+Summary: Code repository for FOMO EHR foundation model benchmarks.
+License: MIT License
+Project-URL: Homepage, https://github.com/reAIM-Lab/ehr_foundation_model_benchmark
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10.0
+Description-Content-Type: text/markdown
+Requires-Dist: duckdb
+Requires-Dist: numpy
+Requires-Dist: polars
+Provides-Extra: dev
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: pytest-subtests; extra == "dev"
+Requires-Dist: rootutils; extra == "dev"
+Requires-Dist: hypothesis; extra == "dev"
+Requires-Dist: black; extra == "dev"
+
 # FoMoH: A Framework for EHR Foundation Model Evaluation
 Code repository for [FoMoH: A clinically meaningful foundation model evaluation for structured electronic health records](https://arxiv.org/abs/2505.16941).
 
@@ -107,12 +132,6 @@ making them essential for both clinical decision support and healthcare manageme
 | **30-day readmission** | Predicts all-cause readmission within 30 days of discharge. Prediction time is at discharge. Patients must have ≥2 years of prior history and not be censored within 30 days post-discharge. Same-day readmissions are excluded. |
 | **Prolonged length-of-stay** | Predicts whether a hospitalization lasts more than 7 days. Prediction is made 48 hours after admission. Patients must have ≥2 years of prior observation. |
 
-
-## Local MIMIC Reproducibility Notes
-
-The local FoMoH-on-MIMIC execution tracker is `spec/03_implementation_tasks.md`. The reproducible rerun manual for the fixed smoke paths is `spec/04_reproducible_runs_manual.md`, and the dataset-portability checklist is `spec/05_new_dataset_checklist.md`. Together they document tmpfs scratch layout, isolated `uv` venvs, required patches, active MIMIC tasks, smoke commands, evidence paths, verification commands, and the steps needed to benchmark another dataset.
-
-For this MIMIC phase, ischemic stroke is intentionally excluded from active smoke pass/fail gates because the current simple MIMIC mapping is zero-positive; revisit it on other datasets. Mamba-Transport remains skipped by user instruction.
 
 ## Model Evaluation
 The EHR foundation models are pre-trained prior to evaluation, while the baseline models are evaluated directly without pretraining. 

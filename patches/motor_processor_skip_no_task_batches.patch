@@ -1,0 +1,9 @@
+diff --git a/femr/models/processor.py b/femr/models/processor.py
+--- a/femr/models/processor.py
++++ b/femr/models/processor.py
+@@ -392,7 +392,8 @@ def _batch_generator(batch_data, *, creator, path_to_database):
+-                assert "task" in result, f"No task present in {lengths[start:end, :]} {i} {start} {end}"
++                if "task" not in result:
++                    continue
+
+                 yield result

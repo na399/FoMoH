@@ -1,0 +1,34 @@
+diff --git a/femr/ontology.py b/femr/ontology.py
+--- a/femr/ontology.py
++++ b/femr/ontology.py
+@@ -158,23 +158,29 @@ class Ontology:
+-    def get_all_children(self, code: str) -> Set[str]:
++    def get_all_children(self, code: str, _seen: Optional[Set[str]] = None) -> Set[str]:
+         """Get all children, including through the ontology."""
++        _seen = set() if _seen is None else _seen
++        if code in _seen:
++            return {code}
++        _seen.add(code)
+         if code not in self.all_children_map:
+             result = {code}
+             for child in self.children_map.get(code, set()):
+-                result |= self.get_all_children(child)
++                result |= self.get_all_children(child, _seen)
+             self.all_children_map[code] = result
+         return self.all_children_map[code]
+@@ -170,13 +176,17 @@ class Ontology:
+-    def get_all_parents(self, code: str) -> Set[str]:
++    def get_all_parents(self, code: str, _seen: Optional[Set[str]] = None) -> Set[str]:
+         """Get all parents, including through the ontology."""
++        _seen = set() if _seen is None else _seen
++        if code in _seen:
++            return {code}
++        _seen.add(code)
+         if code not in self.all_parents_map:
+             result = {code}
+             for parent in self.parents_map.get(code, set()):
+-                result |= self.get_all_parents(parent)
++                result |= self.get_all_parents(parent, _seen)
+             self.all_parents_map[code] = result
+
+         return self.all_parents_map[code]

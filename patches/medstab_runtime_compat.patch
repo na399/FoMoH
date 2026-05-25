@@ -1,0 +1,35 @@
+diff --git a/mixins/__init__.py b/mixins/__init__.py
+new file mode 100644
+--- /dev/null
++++ b/mixins/__init__.py
+@@ -0,0 +1,24 @@
++class TimeableMixin:
++    def __init__(self, *args, cache_prefix=None, **kwargs):
++        self.cache_prefix = cache_prefix
++        if args or kwargs:
++            try:
++                super().__init__(*args, **kwargs)
++            except TypeError:
++                super().__init__()
++        else:
++            super().__init__()
++
++    def _register_start(self, key=None):
++        return None
++
++    def _register_end(self, key=None):
++        return None
++
++    @staticmethod
++    def TimeAs(func):
++        def wrapper(*args, **kwargs):
++            return func(*args, **kwargs)
++        wrapper.__name__ = getattr(func, "__name__", "wrapper")
++        wrapper.__doc__ = getattr(func, "__doc__", None)
++        return wrapper
+diff --git a/MEDS_transforms/mapreduce/utils.py b/MEDS_transforms/mapreduce/utils.py
+new file mode 100644
+--- /dev/null
++++ b/MEDS_transforms/mapreduce/utils.py
+@@ -0,0 +1 @@
++from .rwlock import rwlock_wrap

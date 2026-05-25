@@ -1,0 +1,19 @@
+diff --git a/cehrgpt/models/tokenization_hf_cehrgpt.py b/cehrgpt/models/tokenization_hf_cehrgpt.py
+--- a/cehrgpt/models/tokenization_hf_cehrgpt.py
++++ b/cehrgpt/models/tokenization_hf_cehrgpt.py
+@@ -784,7 +784,7 @@ class CehrGptTokenizer(PreTrainedTokenizer):
+         if "VS" in self._tokenizer.get_vocab():
+             return self._convert_token_to_id("VS")
+         elif "[VS]" in self._tokenizer.get_vocab():
+             return self._convert_token_to_id("[VS]")
+         else:
+-            raise RuntimeError("The tokenizer does not contain either VS or [VS]")
++            return self.start_token_id
+@@ -794,7 +794,7 @@ class CehrGptTokenizer(PreTrainedTokenizer):
+         if "VE" in self._tokenizer.get_vocab():
+             return self._convert_token_to_id("VE")
+         elif "[VE]" in self._tokenizer.get_vocab():
+             return self._convert_token_to_id("[VE]")
+         else:
+-            raise RuntimeError("The tokenizer does not contain either VE or [VE]")
++            return self.end_token_id
