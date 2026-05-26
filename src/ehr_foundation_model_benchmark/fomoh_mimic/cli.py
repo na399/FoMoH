@@ -11,6 +11,7 @@ from ehr_foundation_model_benchmark.fomoh_mimic.features import write_count_feat
 from ehr_foundation_model_benchmark.fomoh_mimic.labels import write_labels_by_split
 from ehr_foundation_model_benchmark.fomoh_mimic.omop_exports import export_all_omop_smoke_layouts
 from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import write_simple_phenotype_labels
+from ehr_foundation_model_benchmark.fomoh_mimic.phase1_summary import write_phase1_summary
 from ehr_foundation_model_benchmark.fomoh_mimic.probe import run_probe
 from ehr_foundation_model_benchmark.fomoh_mimic.report import write_report
 from ehr_foundation_model_benchmark.fomoh_mimic.smoke_infra import (
@@ -143,6 +144,10 @@ def main() -> None:
     report.add_argument("--metrics-json", type=Path, required=True)
     report.add_argument("--training-json", type=Path, required=True)
 
+    phase1_summary = subparsers.add_parser("phase1-summary")
+    phase1_summary.add_argument("--status-json", type=Path, default=Path("runs/fomoh_mimic/benchmark_scale_status.json"))
+    phase1_summary.add_argument("--output-md", type=Path, default=Path("runs/fomoh_mimic/mimic_phase1_benchmark_summary.md"))
+
     args = parser.parse_args()
     if args.command == "validate-resources":
         _write_json(args.output_json, asdict(summarize_resources()))
@@ -250,6 +255,8 @@ def main() -> None:
             metrics=json.loads(args.metrics_json.read_text()),
             training_summary=json.loads(args.training_json.read_text()),
         )
+    elif args.command == "phase1-summary":
+        write_phase1_summary(args.status_json, args.output_md)
 
 
 if __name__ == "__main__":
