@@ -7,6 +7,8 @@ from typing import Any
 
 import polars as pl
 
+from ehr_foundation_model_benchmark.fomoh_mimic.duckdb_source import DuckDBConnectionSpec, connect_duckdb_source
+
 
 PHENOTYPE_NAMES = (
     "ami",
@@ -71,7 +73,46 @@ def _id_list(ids: tuple[int, ...]) -> str:
     return ", ".join(str(value) for value in ids)
 
 
-def _labels_sql(spec: PhenotypeConceptSpec) -> str:
+EVENT_TABLE_SPECS = {
+    "condition_occurrence": (
+        "condition_concept_id",
+        "COALESCE(condition_start_datetime, CAST(condition_start_date AS TIMESTAMP))",
+    ),
+    "drug_exposure": (
+        "drug_concept_id",
+        "COALESCE(drug_exposure_start_datetime, CAST(drug_exposure_start_date AS TIMESTAMP))",
+    ),
+    "procedure_occurrence": (
+        "procedure_concept_id",
+        "COALESCE(procedure_datetime, CAST(procedure_date AS TIMESTAMP))",
+    ),
+    "measurement": (
+        "measurement_concept_id",
+        "COALESCE(measurement_datetime, CAST(measurement_date AS TIMESTAMP))",
+    ),
+    "observation": (
+        "observation_concept_id",
+        "COALESCE(observation_datetime, CAST(observation_date AS TIMESTAMP))",
+    ),
+}
+
+
+def _case_event_unions(available_tables: set[str]) -> str:
+    selects = []
+    for table, (concept_col, time_expr) in EVENT_TABLE_SPECS.items():
+        if table not in available_tables:
+            continue
+        selects.append(
+            f"""    SELECT person_id, {time_expr} AS event_time, {concept_col} AS concept_id
+    FROM {table}
+    WHERE {concept_col} IN (SELECT concept_id FROM included_concepts)"""
+        )
+    if not selects:
+        return "    SELECT NULL::BIGINT AS person_id, NULL::TIMESTAMP AS event_time, NULL::BIGINT AS concept_id WHERE FALSE"
+    return "\n    UNION ALL\n".join(selects)
+
+
+def phenotype_labels_sql(spec: PhenotypeConceptSpec, *, available_tables: set[str]) -> str:
     include_ids = _id_list(spec.include_concept_ids)
     exclude_ids = _id_list(spec.exclude_concept_ids)
     exclude_clause = (
@@ -79,6 +120,7 @@ def _labels_sql(spec: PhenotypeConceptSpec) -> str:
         if spec.exclude_concept_ids
         else ""
     )
+    case_events = _case_event_unions(available_tables)
     return f"""
 WITH included_concepts AS (
     SELECT descendant_concept_id AS concept_id
@@ -95,25 +137,7 @@ excluded_concepts AS (
     SELECT concept_id FROM concept WHERE concept_id IN ({exclude_ids})
 ),
 case_events AS (
-    SELECT person_id, COALESCE(condition_start_datetime, CAST(condition_start_date AS TIMESTAMP)) AS event_time, condition_concept_id AS concept_id
-    FROM condition_occurrence
-    WHERE condition_concept_id IN (SELECT concept_id FROM included_concepts)
-    UNION ALL
-    SELECT person_id, COALESCE(drug_exposure_start_datetime, CAST(drug_exposure_start_date AS TIMESTAMP)) AS event_time, drug_concept_id AS concept_id
-    FROM drug_exposure
-    WHERE drug_concept_id IN (SELECT concept_id FROM included_concepts)
-    UNION ALL
-    SELECT person_id, COALESCE(procedure_datetime, CAST(procedure_date AS TIMESTAMP)) AS event_time, procedure_concept_id AS concept_id
-    FROM procedure_occurrence
-    WHERE procedure_concept_id IN (SELECT concept_id FROM included_concepts)
-    UNION ALL
-    SELECT person_id, COALESCE(measurement_datetime, CAST(measurement_date AS TIMESTAMP)) AS event_time, measurement_concept_id AS concept_id
-    FROM measurement
-    WHERE measurement_concept_id IN (SELECT concept_id FROM included_concepts)
-    UNION ALL
-    SELECT person_id, COALESCE(observation_datetime, CAST(observation_date AS TIMESTAMP)) AS event_time, observation_concept_id AS concept_id
-    FROM observation
-    WHERE observation_concept_id IN (SELECT concept_id FROM included_concepts)
+{case_events}
 ),
 case_events_filtered AS (
     SELECT person_id, event_time
@@ -158,8 +182,28 @@ WHERE NOT EXISTS (
 """
 
 
-def write_simple_phenotype_labels(
-    duckdb_path: Path,
+def _empty_label_frame() -> pl.DataFrame:
+    return pl.DataFrame(
+        {
+            "subject_id": [],
+            "prediction_time": [],
+            "boolean_value": [],
+        },
+        schema={
+            "subject_id": pl.Int64,
+            "prediction_time": pl.Datetime("us"),
+            "boolean_value": pl.Boolean,
+        },
+    )
+
+
+def _write_empty_task(task_dir: Path) -> None:
+    for split in ("train", "tuning", "held_out"):
+        _empty_label_frame().write_parquet(task_dir / f"{split}.parquet")
+
+
+def write_simple_phenotype_labels_from_connection(
+    conn: Any,
     subject_splits_path: Path,
     cohort_definitions_dir: Path,
     output_dir: Path,
@@ -168,8 +212,6 @@ def write_simple_phenotype_labels(
     max_negative_rows_per_task: int | None = None,
     tasks: list[str] | None = None,
 ) -> dict[str, dict[str, int | str]]:
-    import duckdb
-
     splits = pl.read_parquet(subject_splits_path)
     subject_col = "subject_id" if "subject_id" in splits.columns else "patient_id"
     splits = splits.select(
@@ -179,31 +221,31 @@ def write_simple_phenotype_labels(
         ]
     )
     output_dir.mkdir(parents=True, exist_ok=True)
+    available_tables = {row[0] for row in conn.execute("SHOW TABLES").fetchall()}
     summary: dict[str, dict[str, int | str]] = {}
-    with duckdb.connect(str(duckdb_path), read_only=True) as conn:
-        for name in (tasks or list(PHENOTYPE_NAMES)):
-            spec = load_phenotype_concept_spec(cohort_definitions_dir / f"{name}_case.json")
-            task_dir = output_dir / "phenotypes" / name
-            task_dir.mkdir(parents=True, exist_ok=True)
-            if not spec.include_concept_ids:
-                for split in ("train", "tuning", "held_out"):
-                    pl.DataFrame(
-                        {
-                            "subject_id": [],
-                            "prediction_time": [],
-                            "boolean_value": [],
-                        },
-                        schema={
-                            "subject_id": pl.Int64,
-                            "prediction_time": pl.Datetime("us"),
-                            "boolean_value": pl.Boolean,
-                        },
-                    ).write_parquet(task_dir / f"{split}.parquet")
-                summary[name] = {"status": "skipped_no_case_concepts", "train": 0, "tuning": 0, "held_out": 0}
-                continue
-            sql = _labels_sql(spec)
-            if max_negative_rows_per_task is not None:
-                sql = f"""
+    required_tables = {"concept", "concept_ancestor", "condition_occurrence", "visit_occurrence", "observation_period"}
+    missing_required = sorted(required_tables - available_tables)
+    for name in (tasks or list(PHENOTYPE_NAMES)):
+        spec = load_phenotype_concept_spec(cohort_definitions_dir / f"{name}_case.json")
+        task_dir = output_dir / "phenotypes" / name
+        task_dir.mkdir(parents=True, exist_ok=True)
+        if missing_required:
+            _write_empty_task(task_dir)
+            summary[name] = {
+                "status": "blocked_missing_tables",
+                "missing_tables": ",".join(missing_required),
+                "train": 0,
+                "tuning": 0,
+                "held_out": 0,
+            }
+            continue
+        if not spec.include_concept_ids:
+            _write_empty_task(task_dir)
+            summary[name] = {"status": "skipped_no_case_concepts", "train": 0, "tuning": 0, "held_out": 0}
+            continue
+        sql = phenotype_labels_sql(spec, available_tables=available_tables)
+        if max_negative_rows_per_task is not None:
+            sql = f"""
 WITH labels AS (
 {sql}
 ), ranked AS (
@@ -214,21 +256,65 @@ SELECT subject_id, prediction_time, boolean_value
 FROM ranked
 WHERE boolean_value = TRUE OR (boolean_value = FALSE AND rn <= {int(max_negative_rows_per_task)})
 """
-            elif max_rows_per_task is not None:
-                sql += f"\nLIMIT {int(max_rows_per_task)}"
-            result = conn.execute(sql)
-            columns = [column[0] for column in result.description]
-            df = pl.DataFrame(result.fetchall(), schema=columns, orient="row")
-            if df.is_empty():
-                joined = df.with_columns(pl.lit("").alias("split"))
-            else:
-                joined = df.join(splits, on="subject_id", how="inner")
-            task_counts: dict[str, int | str] = {"status": "generated"}
-            for split in ("train", "tuning", "held_out"):
-                split_df = joined.filter(pl.col("split") == split).select(
-                    ["subject_id", "prediction_time", "boolean_value"]
-                )
-                split_df.write_parquet(task_dir / f"{split}.parquet")
-                task_counts[split] = split_df.height
-            summary[name] = task_counts
+        elif max_rows_per_task is not None:
+            sql += f"\nLIMIT {int(max_rows_per_task)}"
+        result = conn.execute(sql)
+        columns = [column[0] for column in result.description]
+        df = pl.DataFrame(result.fetchall(), schema=columns, orient="row")
+        if df.is_empty():
+            joined = df.with_columns(pl.lit("").alias("split"))
+        else:
+            joined = df.join(splits, on="subject_id", how="inner")
+        task_counts: dict[str, int | str] = {"status": "generated"}
+        for split in ("train", "tuning", "held_out"):
+            split_df = joined.filter(pl.col("split") == split).select(
+                ["subject_id", "prediction_time", "boolean_value"]
+            )
+            split_df.write_parquet(task_dir / f"{split}.parquet")
+            task_counts[split] = split_df.height
+            task_counts[f"{split}_positives"] = int(split_df["boolean_value"].sum()) if not split_df.is_empty() else 0
+        summary[name] = task_counts
     return summary
+
+
+def write_simple_phenotype_labels_from_spec(
+    duckdb_spec: DuckDBConnectionSpec,
+    subject_splits_path: Path,
+    cohort_definitions_dir: Path,
+    output_dir: Path,
+    *,
+    max_rows_per_task: int | None = None,
+    max_negative_rows_per_task: int | None = None,
+    tasks: list[str] | None = None,
+) -> dict[str, dict[str, int | str]]:
+    with connect_duckdb_source(duckdb_spec) as conn:
+        return write_simple_phenotype_labels_from_connection(
+            conn,
+            subject_splits_path,
+            cohort_definitions_dir,
+            output_dir,
+            max_rows_per_task=max_rows_per_task,
+            max_negative_rows_per_task=max_negative_rows_per_task,
+            tasks=tasks,
+        )
+
+
+def write_simple_phenotype_labels(
+    duckdb_path: Path,
+    subject_splits_path: Path,
+    cohort_definitions_dir: Path,
+    output_dir: Path,
+    *,
+    max_rows_per_task: int | None = None,
+    max_negative_rows_per_task: int | None = None,
+    tasks: list[str] | None = None,
+) -> dict[str, dict[str, int | str]]:
+    return write_simple_phenotype_labels_from_spec(
+        DuckDBConnectionSpec(path=duckdb_path, public_path=str(duckdb_path)),
+        subject_splits_path,
+        cohort_definitions_dir,
+        output_dir,
+        max_rows_per_task=max_rows_per_task,
+        max_negative_rows_per_task=max_negative_rows_per_task,
+        tasks=tasks,
+    )

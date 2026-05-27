@@ -11,7 +11,7 @@ from ehr_foundation_model_benchmark.fomoh_mimic.ehrshot_labels import export_tas
 from ehr_foundation_model_benchmark.fomoh_mimic.features import write_count_features_for_labels, write_count_features_for_tasks
 from ehr_foundation_model_benchmark.fomoh_mimic.labels import write_labels_by_split
 from ehr_foundation_model_benchmark.fomoh_mimic.omop_exports import export_all_omop_smoke_layouts, export_all_omop_smoke_layouts_from_spec
-from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import write_simple_phenotype_labels
+from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import write_simple_phenotype_labels_from_spec
 from ehr_foundation_model_benchmark.fomoh_mimic.phase1_summary import write_phase1_summary
 from ehr_foundation_model_benchmark.fomoh_mimic.probe import run_probe
 from ehr_foundation_model_benchmark.fomoh_mimic.report import write_report
@@ -56,6 +56,10 @@ def main() -> None:
 
     phenotypes = subparsers.add_parser("generate-phenotype-labels")
     phenotypes.add_argument("--duckdb", type=Path, default=Path("/home/natthawut/MIMIC/data/mimiciv_omop.duckdb"))
+    phenotypes.add_argument("--duckdb-env", default=None)
+    phenotypes.add_argument("--schema", default=None)
+    phenotypes.add_argument("--schema-env", default=None)
+    phenotypes.add_argument("--duckdb-encryption-key-env", default=None)
     phenotypes.add_argument("--subject-splits", type=Path, default=DEFAULT_MEDS_DIR / "metadata" / "subject_splits.parquet")
     phenotypes.add_argument("--cohort-definitions-dir", type=Path, default=Path("src/ehr_foundation_model_benchmark/phenotypes/cohort_definitions"))
     phenotypes.add_argument("--output-dir", type=Path, required=True)
@@ -176,8 +180,14 @@ def main() -> None:
     elif args.command == "generate-phenotype-labels":
         _write_json(
             args.summary_json,
-            write_simple_phenotype_labels(
-                args.duckdb,
+            write_simple_phenotype_labels_from_spec(
+                duckdb_spec_from_args(
+                    None if args.duckdb_env else args.duckdb,
+                    duckdb_env=args.duckdb_env,
+                    schema=args.schema,
+                    schema_env=args.schema_env,
+                    encryption_key_env=args.duckdb_encryption_key_env,
+                ),
                 args.subject_splits,
                 args.cohort_definitions_dir,
                 args.output_dir,

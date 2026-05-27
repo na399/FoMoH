@@ -11,7 +11,7 @@ from ehr_foundation_model_benchmark.fomoh_mimic.features import (
     _windowed_features_for_subject,
 )
 from ehr_foundation_model_benchmark.fomoh_mimic.labels import generate_outcome_labels_from_rows
-from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import load_phenotype_concept_spec
+from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import load_phenotype_concept_spec, phenotype_labels_sql
 
 
 def row(subject_id, time, code, visit_id=None):
@@ -95,6 +95,28 @@ def test_load_phenotype_concept_spec_uses_primary_codeset():
     assert 4329847 in spec.include_concept_ids
     assert 314666 in spec.exclude_concept_ids
     assert 9201 not in spec.include_concept_ids
+
+
+def test_phenotype_sql_omits_missing_optional_event_tables():
+    spec = load_phenotype_concept_spec(
+        Path("src/ehr_foundation_model_benchmark/phenotypes/cohort_definitions/ami_case.json")
+    )
+
+    sql = phenotype_labels_sql(
+        spec,
+        available_tables={
+            "concept",
+            "concept_ancestor",
+            "condition_occurrence",
+            "visit_occurrence",
+            "observation_period",
+        },
+    )
+
+    assert "FROM condition_occurrence" in sql
+    assert "FROM measurement" not in sql
+    assert "FROM observation" not in sql
+    assert "FROM drug_exposure" not in sql
 
 
 def test_vectorized_subject_features_match_reference_loop():
