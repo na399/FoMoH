@@ -15,6 +15,7 @@ Code repository for [FoMoH: A clinically meaningful foundation model evaluation 
 - [Evaluation Tasks](#evaluation-tasks)
   - [Phenotypes](#phenotypes)
   - [Patient Outcomes](#patient-outcomes)
+- [Reproducible Runs](#reproducible-runs)
 - [Model Evaluation](#model-evaluation)
 
 ## Requirements
@@ -108,11 +109,26 @@ making them essential for both clinical decision support and healthcare manageme
 | **Prolonged length-of-stay** | Predicts whether a hospitalization lasts more than 7 days. Prediction is made 48 hours after admission. Patients must have ≥2 years of prior observation. |
 
 
-## Local MIMIC Reproducibility Notes
+## Reproducible Runs
 
-The local FoMoH-on-MIMIC execution tracker is `spec/03_implementation_tasks.md`. The reproducible rerun manual for the fixed smoke paths is `spec/04_reproducible_runs_manual.md`, and the dataset-portability checklist is `spec/05_new_dataset_checklist.md`. Together they document tmpfs scratch layout, isolated `uv` venvs, required patches, active MIMIC tasks, smoke commands, evidence paths, verification commands, and the steps needed to benchmark another dataset.
+We includes a thin Hydra runner for reproducible command planning. The runner composes dataset, model, phase, resource, and experiment configs, then writes both JSON and shell command plans under the configured run root. It is dry-run by default; execution requires an explicit opt-in.
 
-For this MIMIC phase, ischemic stroke is intentionally excluded from active smoke pass/fail gates because the current simple MIMIC mapping is zero-positive; revisit it on other datasets. Mamba-Transport remains skipped by user instruction.
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=<validate|smoke|full_active|report> \
+  model=<model_config> \
+  paths.run_root="runs/${DATASET_NAME}" \
+  paths.temp_root="temp/${DATASET_NAME}" \
+  paths.tmpfs_root="/dev/shm/${DATASET_NAME}" \
+  --dry-run
+```
+
+Use dataset configs to reference environment variable names or portable defaults, not private data paths. Use resource configs to capture GPU gates, batch settings, tmpfs caches, and kernel build settings. Keep generated plans, reports, metrics, and manifests in `${RUN_ROOT}`; keep transient logs in `${TEMP_ROOT}` and large scratch under `${TMPFS_ROOT}`.
+
+To execute a composed plan, pass `--execute`. GPU phases run a gate before launching and fail closed if the configured memory policy does not pass.
+
+The dataset-agnostic operator guide is in `docs/manual/`. Dataset-specific task lists, exclusions, caveats, and machine-local paths should live in run-specific `spec/` notes or generated `runs/` reports, not in the reusable manual.
 
 ## Model Evaluation
 The EHR foundation models are pre-trained prior to evaluation, while the baseline models are evaluated directly without pretraining. 

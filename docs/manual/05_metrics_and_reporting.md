@@ -2,6 +2,23 @@
 
 This page regenerates the benchmark matrix, runtime profile, and final summary for any dataset.
 
+## Step 0: Emit A Report Plan
+
+Use the report phase to record the reporting commands before regenerating summaries.
+
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=report \
+  model=<model_config> \
+  paths.run_root="${RUN_ROOT}" \
+  paths.temp_root="${TEMP_ROOT}" \
+  paths.tmpfs_root="${TMPFS_ROOT}" \
+  --dry-run
+```
+
+Keep the generated report plan with the benchmark matrix so readers can trace how the summary was produced.
+
 ## Step 1: Regenerate The Benchmark Matrix
 
 ```shell

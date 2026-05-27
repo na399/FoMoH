@@ -1,0 +1,6 @@
+name: report
+requires_gpu: false
+commands:
+  - write_benchmark_status
+  - write_benchmark_profile
+  - write_phase1_summary

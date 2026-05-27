@@ -1,0 +1,5 @@
+name: corebehrt
+family: corebehrt
+python: ${paths.tmpfs_root}/venvs/corebehrt/bin/python
+requires_gpu: false
+kernel_packages: []

@@ -1,0 +1,10 @@
+name: fomoh_mimic
+config_name: mimic_env
+meds_dir: ${oc.env:FOMOH_MIMIC_MEDS_DIR,data/mimic_meds}
+meds_reader_dir: ${oc.env:FOMOH_MIMIC_MEDS_READER_DIR,data/mimic_meds_reader}
+omop_duckdb: ${oc.env:FOMOH_MIMIC_OMOP_DUCKDB,data/mimic_omop.duckdb}
+athena_vocab_duckdb: ${oc.env:FOMOH_MIMIC_ATHENA_VOCAB_DUCKDB,data/athena_vocab.duckdb}
+task_manifest: ${oc.env:FOMOH_MIMIC_TASK_MANIFEST,runs/fomoh_mimic/task_bundle_mimic_identifiable_manifest.json}
+labels_root: ${oc.env:FOMOH_MIMIC_LABELS_ROOT,runs/fomoh_mimic/task_labels}
+excluded_tasks:
+  - phenotypes/ischemic_stroke

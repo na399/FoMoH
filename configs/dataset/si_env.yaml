@@ -1,0 +1,10 @@
+name: fomoh_si
+config_name: si_env
+source_format: encrypted_omop_duckdb
+duckdb_env: BRANCHUS_DUCKDB_PATH
+schema_env: BRANCHUS_DUCKDB_SCHEMA
+encryption_key_env: BRANCHUS_DUCKDB_ENCRYPTION_KEY
+branchus_config_env: BRANCHUS_CONFIG_PATH
+task_manifest: ${oc.env:FOMOH_SI_TASK_MANIFEST,runs/fomoh_si/task_bundle_manifest.json}
+labels_root: ${oc.env:FOMOH_SI_LABELS_ROOT,runs/fomoh_si/task_labels}
+excluded_tasks: []

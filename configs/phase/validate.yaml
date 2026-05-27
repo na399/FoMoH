@@ -1,0 +1,5 @@
+name: validate
+requires_gpu: false
+commands:
+  - validate_resources
+  - validate_task_manifest

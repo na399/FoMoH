@@ -1,0 +1,5 @@
+name: cehrbert
+family: cehr
+python: ${paths.tmpfs_root}/venvs/cehrbert/bin/python
+requires_gpu: false
+kernel_packages: []

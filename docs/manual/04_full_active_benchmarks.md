@@ -11,6 +11,23 @@ echo "${TASK_MANIFEST}"
 
 The active manifest should exclude dataset-specific non-identifiable tasks and record those exclusions outside this manual.
 
+## Step 1a: Emit A Full-Active Plan
+
+Use the Hydra runner to compose the selected model and resource settings before launching full-active work.
+
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=full_active \
+  model="${MODEL_NAME}" \
+  paths.run_root="${RUN_ROOT}" \
+  paths.temp_root="${TEMP_ROOT}" \
+  paths.tmpfs_root="${TMPFS_ROOT}" \
+  --dry-run
+```
+
+The emitted plan is the reproducibility record for command order, environment overrides, logs, and whether GPU gating is required.
+
 ## Step 2: Run Baseline Or Tabular Models
 
 For each baseline `${MODEL_NAME}`:

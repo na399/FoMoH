@@ -1,0 +1,8 @@
+name: hf_ehr_mamba
+family: hf_ehr
+hf_ehr_arch: mamba
+python: ${paths.tmpfs_root}/venvs/hf_ehr/bin/python
+requires_gpu: true
+kernel_packages:
+  - causal-conv1d
+  - mamba-ssm

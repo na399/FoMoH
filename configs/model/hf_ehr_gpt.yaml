@@ -1,0 +1,6 @@
+name: hf_ehr_gpt
+family: hf_ehr
+hf_ehr_arch: gpt
+python: ${paths.tmpfs_root}/venvs/hf_ehr/bin/python
+requires_gpu: true
+kernel_packages: []

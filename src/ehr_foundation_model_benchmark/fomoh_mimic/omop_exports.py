@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Iterable
 
+from ehr_foundation_model_benchmark.fomoh_mimic.duckdb_source import DuckDBConnectionSpec, connect_duckdb_source
 from ehr_foundation_model_benchmark.fomoh_mimic.smoke_infra import write_json
 
 
@@ -56,30 +57,33 @@ def _cehr_table_sql(table: str, max_persons: int) -> str:
     return cte + f"SELECT t.* FROM {table} t JOIN selected_persons s USING (person_id)"
 
 
-def export_cehr_omop_smoke(duckdb_path: Path, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
-    import duckdb
-
+def export_cehr_omop_smoke_from_connection(conn: Any, source_label: str, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    summary: dict[str, Any] = {"duckdb_path": str(duckdb_path), "output_dir": str(output_dir), "max_persons": max_persons, "tables": {}}
-    with duckdb.connect(str(duckdb_path), read_only=True) as conn:
-        available = {row[0] for row in conn.execute("SHOW TABLES").fetchall()}
-        for table in CEHR_TABLES:
-            if table not in available:
-                summary["tables"][table] = {"status": "missing"}
-                continue
-            output_path = output_dir / f"{table}.csv"
-            _copy_query_to_csv(conn, _cehr_table_sql(table, max_persons), output_path)
-            summary["tables"][table] = {"status": "exported", "path": str(output_path), "bytes": output_path.stat().st_size}
-        for table in CEHR_PARQUET_TABLES:
-            if table not in available:
-                summary["tables"].setdefault(table, {"status": "missing"})
-                continue
-            output_path = output_dir / table / "part-00000.parquet"
-            _copy_query_to_parquet(conn, _cehr_table_sql(table, max_persons), output_path)
-            summary["tables"].setdefault(table, {"status": "exported"})
-            summary["tables"][table]["parquet_path"] = str(output_path)
-            summary["tables"][table]["parquet_bytes"] = output_path.stat().st_size
+    summary: dict[str, Any] = {"duckdb_path": source_label, "output_dir": str(output_dir), "max_persons": max_persons, "tables": {}}
+    available = {row[0] for row in conn.execute("SHOW TABLES").fetchall()}
+    for table in CEHR_TABLES:
+        if table not in available:
+            summary["tables"][table] = {"status": "missing"}
+            continue
+        output_path = output_dir / f"{table}.csv"
+        _copy_query_to_csv(conn, _cehr_table_sql(table, max_persons), output_path)
+        summary["tables"][table] = {"status": "exported", "path": str(output_path), "bytes": output_path.stat().st_size}
+    for table in CEHR_PARQUET_TABLES:
+        if table not in available:
+            summary["tables"].setdefault(table, {"status": "missing"})
+            continue
+        output_path = output_dir / table / "part-00000.parquet"
+        _copy_query_to_parquet(conn, _cehr_table_sql(table, max_persons), output_path)
+        summary["tables"].setdefault(table, {"status": "exported"})
+        summary["tables"][table]["parquet_path"] = str(output_path)
+        summary["tables"][table]["parquet_bytes"] = output_path.stat().st_size
     return summary
+
+
+def export_cehr_omop_smoke(duckdb_path: Path, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
+    spec = DuckDBConnectionSpec(path=duckdb_path, public_path=str(duckdb_path))
+    with connect_duckdb_source(spec) as conn:
+        return export_cehr_omop_smoke_from_connection(conn, spec.public_path, output_dir, max_persons=max_persons)
 
 
 def _core_event_sql(table: str, max_persons: int) -> str:
@@ -108,40 +112,49 @@ ORDER BY PID, TIMESTAMP
 """
 
 
-def export_corebehrt_flat_smoke(duckdb_path: Path, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
-    import duckdb
-
+def export_corebehrt_flat_smoke_from_connection(conn: Any, source_label: str, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    summary: dict[str, Any] = {"duckdb_path": str(duckdb_path), "output_dir": str(output_dir), "max_persons": max_persons, "tables": {}}
-    with duckdb.connect(str(duckdb_path), read_only=True) as conn:
-        patient_sql = _selected_persons_cte(max_persons) + """
+    summary: dict[str, Any] = {"duckdb_path": source_label, "output_dir": str(output_dir), "max_persons": max_persons, "tables": {}}
+    patient_sql = _selected_persons_cte(max_persons) + """
 SELECT
     p.person_id AS PID,
-    CAST(COALESCE(p.birth_datetime, make_date(p.year_of_birth, COALESCE(p.month_of_birth, 1), COALESCE(p.day_of_birth, 1))) AS DATE) AS DATE_OF_BIRTH,
+    CAST(COALESCE(TRY_CAST(p.birth_datetime AS TIMESTAMP), CAST(make_date(TRY_CAST(p.year_of_birth AS INTEGER), COALESCE(TRY_CAST(p.month_of_birth AS INTEGER), 1), COALESCE(TRY_CAST(p.day_of_birth AS INTEGER), 1)) AS TIMESTAMP)) AS DATE) AS DATE_OF_BIRTH,
     CAST(p.gender_concept_id AS VARCHAR) AS GENDER,
     CAST(p.race_concept_id AS VARCHAR) AS RACE
 FROM person p
 JOIN selected_persons s USING (person_id)
 ORDER BY PID
 """
-        patients_path = output_dir / "patients_info.csv"
-        _copy_query_to_csv(conn, patient_sql, patients_path)
-        summary["tables"]["patients_info"] = {"status": "exported", "path": str(patients_path), "bytes": patients_path.stat().st_size}
-        patient_alias_path = output_dir / "patient_format.csv"
-        _copy_query_to_csv(conn, patient_sql, patient_alias_path)
-        summary["tables"]["patient_format"] = {"status": "exported", "path": str(patient_alias_path), "bytes": patient_alias_path.stat().st_size}
-        for table in CORE_EVENT_TABLES:
-            output_path = output_dir / table / "part-00000.parquet"
-            _copy_query_to_parquet(conn, _core_event_sql(table, max_persons), output_path)
-            summary["tables"][table] = {"status": "exported", "path": str(output_path), "bytes": output_path.stat().st_size}
+    patients_path = output_dir / "patients_info.csv"
+    _copy_query_to_csv(conn, patient_sql, patients_path)
+    summary["tables"]["patients_info"] = {"status": "exported", "path": str(patients_path), "bytes": patients_path.stat().st_size}
+    patient_alias_path = output_dir / "patient_format.csv"
+    _copy_query_to_csv(conn, patient_sql, patient_alias_path)
+    summary["tables"]["patient_format"] = {"status": "exported", "path": str(patient_alias_path), "bytes": patient_alias_path.stat().st_size}
+    for table in CORE_EVENT_TABLES:
+        output_path = output_dir / table / "part-00000.parquet"
+        _copy_query_to_parquet(conn, _core_event_sql(table, max_persons), output_path)
+        summary["tables"][table] = {"status": "exported", "path": str(output_path), "bytes": output_path.stat().st_size}
     return summary
 
 
+def export_corebehrt_flat_smoke(duckdb_path: Path, output_dir: Path, *, max_persons: int = 512) -> dict[str, Any]:
+    spec = DuckDBConnectionSpec(path=duckdb_path, public_path=str(duckdb_path))
+    with connect_duckdb_source(spec) as conn:
+        return export_corebehrt_flat_smoke_from_connection(conn, spec.public_path, output_dir, max_persons=max_persons)
+
+
 def export_all_omop_smoke_layouts(duckdb_path: Path, output_root: Path, *, max_persons: int = 512) -> dict[str, Any]:
-    summary = {
-        "cehrbert": export_cehr_omop_smoke(duckdb_path, output_root / "cehrbert_omop", max_persons=max_persons),
-        "cehrgpt": export_cehr_omop_smoke(duckdb_path, output_root / "cehrgpt_omop", max_persons=max_persons),
-        "corebehrt": export_corebehrt_flat_smoke(duckdb_path, output_root / "corebehrt_flat", max_persons=max_persons),
-    }
+    spec = DuckDBConnectionSpec(path=duckdb_path, public_path=str(duckdb_path))
+    return export_all_omop_smoke_layouts_from_spec(spec, output_root, max_persons=max_persons)
+
+
+def export_all_omop_smoke_layouts_from_spec(spec: DuckDBConnectionSpec, output_root: Path, *, max_persons: int = 512) -> dict[str, Any]:
+    with connect_duckdb_source(spec) as conn:
+        summary = {
+            "cehrbert": export_cehr_omop_smoke_from_connection(conn, spec.public_path, output_root / "cehrbert_omop", max_persons=max_persons),
+            "cehrgpt": export_cehr_omop_smoke_from_connection(conn, spec.public_path, output_root / "cehrgpt_omop", max_persons=max_persons),
+            "corebehrt": export_corebehrt_flat_smoke_from_connection(conn, spec.public_path, output_root / "corebehrt_flat", max_persons=max_persons),
+        }
     write_json(output_root / "omop_smoke_export_summary.json", summary)
     return summary

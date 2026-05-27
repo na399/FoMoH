@@ -1,0 +1,6 @@
+name: hf_ehr_llama
+family: hf_ehr
+hf_ehr_arch: llama
+python: ${paths.tmpfs_root}/venvs/hf_ehr/bin/python
+requires_gpu: true
+kernel_packages: []

@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - override /dataset: si_env
+  - override /resource: l40s
+
+paths:
+  run_root: runs/fomoh_si
+  temp_root: temp/fomoh_si
+  tmpfs_root: /dev/shm/fomoh_si
+  plan_root: ${paths.run_root}/hydra_plans

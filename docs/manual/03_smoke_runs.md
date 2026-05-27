@@ -10,6 +10,23 @@ nvidia-smi --query-gpu=name,memory.total,memory.used,memory.free,utilization.gpu
 
 Use CPU-only smoke paths where possible before launching GPU work.
 
+## Step 1a: Emit A Smoke Plan
+
+Use Hydra to write the smoke command plan before launching model-specific commands.
+
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=smoke \
+  model="${MODEL_NAME}" \
+  paths.run_root="${RUN_ROOT}" \
+  paths.temp_root="${TEMP_ROOT}" \
+  paths.tmpfs_root="${TMPFS_ROOT}" \
+  --dry-run
+```
+
+Review the plan JSON and shell file under `${RUN_ROOT}/hydra_plans/`. If the smoke requires GPU, execute only after the resource gate passes.
+
 ## Step 2: Run Import And CLI Smokes
 
 For each `${MODEL_NAME}`:

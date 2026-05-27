@@ -1,0 +1,5 @@
+name: medstab
+family: medstab
+python: ${paths.tmpfs_root}/venvs/medstab/bin/python
+requires_gpu: false
+kernel_packages: []

@@ -1,0 +1,5 @@
+name: cehrgpt
+family: cehr
+python: ${paths.tmpfs_root}/venvs/cehrgpt/bin/python
+requires_gpu: false
+kernel_packages: []

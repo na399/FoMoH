@@ -10,6 +10,23 @@ export TMPFS_ROOT="/dev/shm/${DATASET_NAME}"
 
 Use `${TMPFS_ROOT}` for isolated virtual environments, package caches, tokenizer caches, prepared data, temporary checkpoints, and large intermediate feature files. Keep durable summaries and manifests under `${RUN_ROOT}`.
 
+## Step 1a: Emit A Validation Plan
+
+Before creating environments or exports, emit a validate-phase plan so operators can review the dataset contract and output roots.
+
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=validate \
+  model=<model_config> \
+  paths.run_root="${RUN_ROOT}" \
+  paths.temp_root="${TEMP_ROOT}" \
+  paths.tmpfs_root="${TMPFS_ROOT}" \
+  --dry-run
+```
+
+Review `${RUN_ROOT}/hydra_plans/validate_plan.json` before running data preparation.
+
 ## Step 2: Create Isolated Environments
 
 Use one `uv` environment per fragile model stack:

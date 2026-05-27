@@ -1,0 +1,4 @@
+name: full_active
+requires_gpu: true
+commands:
+  - full_active

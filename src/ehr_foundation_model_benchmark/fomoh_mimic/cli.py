@@ -6,10 +6,11 @@ from dataclasses import asdict
 from pathlib import Path
 
 from ehr_foundation_model_benchmark.fomoh_mimic.diagnostics import write_diagnostics_bundle
+from ehr_foundation_model_benchmark.fomoh_mimic.duckdb_source import duckdb_spec_from_args
 from ehr_foundation_model_benchmark.fomoh_mimic.ehrshot_labels import export_task_to_ehrshot_csv
 from ehr_foundation_model_benchmark.fomoh_mimic.features import write_count_features_for_labels, write_count_features_for_tasks
 from ehr_foundation_model_benchmark.fomoh_mimic.labels import write_labels_by_split
-from ehr_foundation_model_benchmark.fomoh_mimic.omop_exports import export_all_omop_smoke_layouts
+from ehr_foundation_model_benchmark.fomoh_mimic.omop_exports import export_all_omop_smoke_layouts, export_all_omop_smoke_layouts_from_spec
 from ehr_foundation_model_benchmark.fomoh_mimic.phenotypes import write_simple_phenotype_labels
 from ehr_foundation_model_benchmark.fomoh_mimic.phase1_summary import write_phase1_summary
 from ehr_foundation_model_benchmark.fomoh_mimic.probe import run_probe
@@ -115,7 +116,11 @@ def main() -> None:
     athena_validate.add_argument("--output-json", type=Path, required=True)
 
     omop_export = subparsers.add_parser("export-omop-smoke-layouts")
-    omop_export.add_argument("--duckdb", type=Path, default=Path("/home/natthawut/MIMIC/data/mimiciv_omop.duckdb"))
+    omop_export.add_argument("--duckdb", type=Path, default=None)
+    omop_export.add_argument("--duckdb-env", default=None)
+    omop_export.add_argument("--schema", default=None)
+    omop_export.add_argument("--schema-env", default=None)
+    omop_export.add_argument("--duckdb-encryption-key-env", default=None)
     omop_export.add_argument("--output-root", type=Path, required=True)
     omop_export.add_argument("--max-persons", type=int, default=512)
     omop_export.add_argument("--summary-json", type=Path, required=True)
@@ -236,7 +241,17 @@ def main() -> None:
     elif args.command == "validate-athena-vocab":
         _write_json(args.output_json, validate_athena_csv_export(args.export_dir))
     elif args.command == "export-omop-smoke-layouts":
-        summary = export_all_omop_smoke_layouts(args.duckdb, args.output_root, max_persons=args.max_persons)
+        if args.duckdb_env:
+            spec = duckdb_spec_from_args(
+                duckdb_env=args.duckdb_env,
+                schema=args.schema,
+                schema_env=args.schema_env,
+                encryption_key_env=args.duckdb_encryption_key_env,
+            )
+            summary = export_all_omop_smoke_layouts_from_spec(spec, args.output_root, max_persons=args.max_persons)
+        else:
+            duckdb_path = args.duckdb or Path("/home/natthawut/MIMIC/data/mimiciv_omop.duckdb")
+            summary = export_all_omop_smoke_layouts(duckdb_path, args.output_root, max_persons=args.max_persons)
         _write_json(args.summary_json, summary)
     elif args.command == "task-bundle-manifest":
         write_task_bundle_manifest(args.labels_dir, args.output_json)

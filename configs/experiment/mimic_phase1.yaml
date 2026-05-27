@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - override /dataset: mimic_env
+  - override /resource: l40s
+
+experiment:
+  name: mimic_phase1
+  description: Env-var-backed FoMoH Phase 1 run shape.
+
+paths:
+  run_root: runs/fomoh_mimic
+  temp_root: temp/fomoh_mimic
+  tmpfs_root: /dev/shm/fomoh_mimic
+  plan_root: runs/fomoh_mimic/hydra_plans

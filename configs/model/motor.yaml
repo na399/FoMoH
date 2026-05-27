@@ -1,0 +1,5 @@
+name: motor
+family: motor
+python: ${paths.tmpfs_root}/venvs/motor/bin/python
+requires_gpu: true
+kernel_packages: []

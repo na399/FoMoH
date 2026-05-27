@@ -21,6 +21,7 @@ classifiers = [
 
 dependencies = [
     "duckdb",
+    "hydra-core",
     "numpy",
     "polars",
 ]

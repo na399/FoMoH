@@ -1,0 +1,4 @@
+name: smoke
+requires_gpu: false
+commands:
+  - model_smoke

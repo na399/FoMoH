@@ -1,0 +1,38 @@
+defaults:
+  - dataset: template
+  - phase: report
+  - model: hf_ehr_gpt
+  - resource: l40s
+  - optional experiment: null
+  - _self_
+
+dry_run: true
+execute: false
+
+paths:
+  run_root: runs/${dataset.name}
+  temp_root: temp/${dataset.name}
+  tmpfs_root: /dev/shm/${dataset.name}
+  plan_root: ${paths.run_root}/hydra_plans
+
+scripts:
+  status_report: temp/fomoh_mimic/scripts/write_benchmark_status_report.py
+  benchmark_profile: temp/fomoh_mimic/scripts/write_benchmark_profile.py
+  phase1_summary_module: ehr_foundation_model_benchmark.fomoh_mimic.cli
+  hf_ehr_benchmark: temp/fomoh_mimic/scripts/run_hf_ehr_active_task_benchmark.py
+  hf_ehr_smoke: temp/fomoh_mimic/scripts/run_hf_ehr_smokes.py
+  hf_ehr_probe_smoke: temp/fomoh_mimic/scripts/run_hf_ehr_all_task_probe_smokes.py
+  cehrgpt_smoke: temp/fomoh_mimic/scripts/run_cehrgpt_pretrain_smoke_retry.py
+  medstab_full_active: temp/fomoh_mimic/scripts/run_medstab_official_full_active.py
+  medstab_smoke: temp/fomoh_mimic/scripts/run_medstab_official_all_task_smoke.py
+  medstab_metrics: temp/fomoh_mimic/scripts/compute_medstab_full_metrics.py
+  motor_probe_smoke: temp/fomoh_mimic/scripts/run_motor_all_task_probe_smoke.py
+  si_non_cuda: temp/fomoh_si/scripts/run_si_non_cuda_steps.py
+  si_non_branchus: temp/fomoh_si/scripts/run_si_non_branchus_steps.py
+  downstream_export: temp/fomoh_mimic/scripts/export_foundation_downstream_active.py
+  downstream_smoke: temp/fomoh_mimic/scripts/run_foundation_downstream_active_smokes.py
+
+hydra:
+  run:
+    dir: ${paths.temp_root}/hydra/${now:%Y%m%d_%H%M%S}
+  output_subdir: null

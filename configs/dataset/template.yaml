@@ -1,0 +1,9 @@
+name: dataset_template
+config_name: template
+meds_dir: ${oc.env:FOMOH_MEDS_DIR,data/meds}
+meds_reader_dir: ${oc.env:FOMOH_MEDS_READER_DIR,data/meds_reader}
+omop_duckdb: ${oc.env:FOMOH_OMOP_DUCKDB,data/omop.duckdb}
+athena_vocab_duckdb: ${oc.env:FOMOH_ATHENA_VOCAB_DUCKDB,data/athena_vocab.duckdb}
+task_manifest: ${oc.env:FOMOH_TASK_MANIFEST,runs/${dataset.name}/task_manifest.json}
+labels_root: ${oc.env:FOMOH_LABELS_ROOT,runs/${dataset.name}/task_labels}
+excluded_tasks: []

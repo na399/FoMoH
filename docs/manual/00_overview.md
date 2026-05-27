@@ -29,6 +29,23 @@ export TMPFS_ROOT="/dev/shm/${DATASET_NAME}"
 
 Only use real local paths in a dataset-specific run note, not in this manual.
 
+## Hydra Runner
+
+Use the Hydra runner to compose reproducible command plans before running model work. Plans are dry-run by default and are written as JSON plus shell commands under `${RUN_ROOT}/hydra_plans/`.
+
+```shell
+uv run python -m ehr_foundation_model_benchmark.fomoh_mimic.hydra_app \
+  dataset=<dataset_config> \
+  phase=<validate|smoke|full_active|report> \
+  model=<model_config> \
+  paths.run_root="${RUN_ROOT}" \
+  paths.temp_root="${TEMP_ROOT}" \
+  paths.tmpfs_root="${TMPFS_ROOT}" \
+  --dry-run
+```
+
+Use `--execute` only after reviewing the emitted plan and confirming the required resource gate. Dataset configs should reference environment variable names or portable placeholders; do not commit private data paths or credentials.
+
 ## Artifact Roots
 
 | Purpose | Convention |

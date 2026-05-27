@@ -1,0 +1,4 @@
+name: non_cuda
+requires_gpu: false
+commands:
+  - non_cuda_pipeline
